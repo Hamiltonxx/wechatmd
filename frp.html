@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://google-fonts.mirrors.sjtug.sjtu.edu.cn/css2?family=Noto+Sans+SC&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="hgz.css">
+</head>
+
+<body>
+
+    <div class="animated-box in">
+        <h1>Animated border</h1>
+        <p>Without fixed width or static background</p>
+    </div>
+
+    <p>本文中的外网机子A和内网机子B均为Ubuntu系统.</p>
+    <h1 id="下载">下载</h1>
+    <pre><code class="language-shell">wget
+            https://github.com/fatedier/frp/releases/download/v0.54.0/frp_0.54.0_linux_amd64.tar.gz
+        </code></pre>
+    <h1 id="外网机子a">外网机子A</h1>
+    <pre><code class="language-shell">tar xzvf frp_0.54.0_linux_amd64.tar.gz
+            cd frp_0.54.0_linux_amd64
+            vim frps.toml
+            bind_port = 7000
+            tls_enable = true
+            ./frps -c frps.toml
+        </code></pre>
+    <h1 id="内网机子b">内网机子B</h1>
+    <pre><code class="language-shell">tar xzvf frp_0.54.0_linux_amd64.tar.gz
+            cd frp_0.54.0_linux_amd64
+            vim frps.toml
+            serverAddr = &quot;sh.cirray.cn&quot;
+            serverPort = 7000
+
+            [[proxies]]
+            name = &quot;ssh&quot;
+            type = &quot;tcp&quot;
+            localIp = &quot;127.0.0.1&quot;
+            localPort = 22
+            remotePort = 7022
+
+            [[proxies]]
+            name = &quot;mysql&quot;
+            type = &quot;tcp&quot;
+            localIp = &quot;127.0.0.1&quot;
+            localPort = 3306
+            remotePort = 7306
+            ./frpc -c frpc.toml
+        </code></pre>
+    <h1 id="开机自启systemd">开机自启systemd</h1>
+    <p>以内网机子B为例</p>
+    <pre><code class="language-shell">sudo vim /etc/systemd/system/frps.service
+            [Unit]
+            Description = frp client
+            After = network.target
+
+            [Service]
+            Type = simple
+            ExecStart = /usr/bin/frpc -c /etc/frp/frpc.toml
+            Restart=on-failure
+            RestartSec=10s
+
+            [Install]
+            WantedBy = multi-user.target
+            sudo systemctl daemon-reload
+            sudo systemctl enable frpc
+            sudo systemctl restart frpc
+        </code></pre>
+
+</body>
+
+</html>
