@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>第一个公众号页</title>
+	<!-- <link rel="stylesheet" type="text/css" href="chengxusiyangyuan.css"> -->
+	<link href="https://google-fonts.mirrors.sjtug.sjtu.edu.cn/css2?family=Noto+Sans+SC&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="cxsyy_hgz.css">
+</head>
+<body>
+	<p>
+		Rust语言学习者，通常都会有其它语言的背景，很少有人从零入门Rust。
+	</p>
+	<p>
+		Rust语言应该有一门适合初学者的教程，来帮助大家使用Rust作为入门语言，我非常希望有人能使用原汁原味Rust的思维在计算机世界攻城略地。这并不说学完这门语言就可以懈怠了，如果没有《操作系统》和《组成原理》等知识的加持根本无法自如运用Rust。例如，标准库中的线程API就是对 <code>系统调用</code> 的直接封装，因此学习这些知识有利于提高Rust技术水平。假如你在操作系统之上做应用开发，必定需要对操作系统实现与系统调用有所了解。
+	</p>
+	<p>
+		我们这门课程假设学习者没有编程知识。那么我们需要介绍一些极为基础的内容，如果你已经非常熟悉，可以快速略过。
+	</p>
+	<p>
+		我们继续使用上节课创建的 <code>oskwgbin</code> 来讲解。
+	</p>
+
+	<h2>
+		程序的基本结构
+	</h2>
+
+	<p>这一节，我们详细讲解</p>
+	<pre><code></code></pre>
+	<p>这段代码功能是将Hello World打印出来。</p>
+	<p>这是一个固定的模式，我们创建一个源文件，在文件中编写如下代码：</p>
+	<pre><code></code></pre>
+	<p>这个框架内部就是我们编写代码的地方，后续介绍到函数，我们会详细介绍它，这里你先记住即可。</p>
+	<blockquote>
+		<h3>标识符</h3>
+		<p>函数名以及后续将学到的变量名、结构体等各种自定义的名字都叫标识符，遵循标识符的命名规则。</p>
+		<ul>
+			<li><strong>首字母</strong>：必须是字母（a-z、A-Z）、下划线（_）或美元符号（$）。- 不能是数字。</li>
+			<li><strong>后续字符</strong>：可以是字母、数字、下划线、美元符号、撇号（'）或非空格的 Unicode 字符。不能包含空格或控制字符。</li>
+			<li>Rust 标识符是 <strong>大小写敏感</strong>的。</li>
+			<li>不能使用 <strong>Rust 关键字</strong>作为标识符。举例：合法的标识符：_variable、my_function、camelCase、UPPER_CASE、snake_case 不合法的标识符：1variable、$function、#hashtag、空格 、'string'</li>
+		</ul>
+		<h3>关键字</h3>
+		<p>Rust 关键字是用于定义语法规则和限制名称空间中的标识符的特殊标识符。包含已经使用的关键字和保留关键字。例如这里的 <code>fn</code> 就是要定义一个函数。所有关键字：https://doc.rust-lang.org/std/index.html#keywords</p>
+	</blockquote>
+	<p>接下来看函数内部，Rust与其他语言不同，它的输出语句用的 <code>println!</code> 是一个宏，作用是将括号中的内容打印出来，双引号中的内容叫 <code>字符串</code> ，字符串我们后面课程再介绍。最后有一个 <code>;</code> ，表示这一句代码结束。就像我们写文章，每句话结束都加句号一样。</p>
+	<pre><code></code></pre>
+	<p>比如下面的代码，我们就可以实现先打印 <code>Hello World!</code> ，再打印 <code>跟程序饲养员学🦀编程</code> 到控制台。</p>
+	<pre><code></code></pre>
+	<p>运行效果如下：</p>
+	<img src="https://mmbiz.qpic.cn/sz_mmbiz_png/Tw3wswjBuibtYThTqesf7ZaFKdX3vicTHgjokj6jz2fx6MfmSzAr7YaNjPFWMbFNXXzvtQJogPFnvvE8fLe9Nibpg/640?wx_fmt=png&from=appmsg&wxfrom=5&wx_lazy=1&wx_co=1" width="350">
+	<p>如果代码缺失分号，那么编译器会认为第一句代码没有结束，也就出现了语法错误，编译器会尽可能的提示出错的地方。</p>
+	<img src="https://mmbiz.qpic.cn/sz_mmbiz_png/Tw3wswjBuibtYThTqesf7ZaFKdX3vicTHgoyOEuytUI7aia7XbVoUO9wmibbpY69MmCtpSKIe3h31IVRuBzb7PeLRA/640?wx_fmt=png&from=appmsg&wxfrom=5&wx_lazy=1&wx_co=1" width="326">
+	<img src="https://mmbiz.qpic.cn/sz_mmbiz_png/Tw3wswjBuibtYThTqesf7ZaFKdX3vicTHgfPhA1LOLYHSQb7eJaEmH5teicXUDAQyWic2ZGMNeYg93HicFKyzvwx3mg/640?wx_fmt=png&from=appmsg&wxfrom=5&wx_lazy=1&wx_co=1" width="350">
+	<p>RustRover会给出快速修复的办法。</p>
+	<p>程序员最讨厌的有两件事， <strong>自己写代码要写注释，看别人代码时没注释。</strong> 可见注释是让我们程序员又爱又恨的存在。</p>
+
+	<h2>注释和文档</h2>
+	<ol>
+		<li>1. 单行注释</li>
+		<li>2. 多行注释</li>
+		<li>3. 文档注释</li>
+	</ol>
+
+</body>
+</html>

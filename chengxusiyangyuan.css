@@ -1,0 +1,107 @@
+/* 程序饲养员 */
+p {
+	font-size: 14px; 
+	text-wrap: wrap; 
+	text-align: left; 
+	line-height: 1.75; 
+	font-family: -apple-system-font, BlinkMacSystemFont, 'Helvetica Neue', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei UI', 'Microsoft YaHei', Arial, sans-serif; 
+	margin-right: 8px; 
+	margin-bottom: 1.5em; 
+	margin-left: 8px; 
+	letter-spacing: 0.1em; 
+	color: rgb(63, 63, 63);
+}
+
+code {
+	white-space: pre-wrap;
+	line-height: 1.75;
+	font-size: 12.6px;
+	color: rgb(221, 17, 68);
+	background: rgba(27, 31, 35, 0.05);
+	padding: 3px 5px;
+	border-radius: 4px;
+}
+
+h2 {
+	letter-spacing: normal;
+	text-wrap: wrap;
+	text-align: center;
+	line-height: 1.75;
+	font-family: -apple-system-font, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI", "Microsoft YaHei", Arial, sans-serif;
+	font-size: 1.2em;
+	font-weight: bold;
+	display: table;
+	margin: 4em auto 2em;
+	padding-right: 0.2em;
+	padding-left: 0.2em;
+	background: rgb(15, 76, 129);
+	color: white;
+}
+
+pre {
+
+}
+pre > code {
+
+}
+
+blockquote {
+	font-size: 14px;
+	letter-spacing: normal;
+	text-wrap: wrap;
+	text-align: left;
+	line-height: 1.75;
+	font-family: -apple-system-font, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI", "Microsoft YaHei", Arial, sans-serif;
+	border-left: none;
+	padding: 1em;
+	border-radius: 8px;
+	color: rgba(0, 0, 0, 0.5);
+	background: rgb(247, 247, 247);
+	margin: 2em 8px;
+}
+
+h3 {
+	line-height: 1.2;
+	font-size: 1.1em;
+	font-weight: bold;
+	margin-top: 2em;
+	margin-right: 8px;
+	margin-bottom: 0.75em;
+	padding-left: 8px;
+	border-left: 3px solid rgb(15,76,129);
+	color: rgb(63, 63, 63);
+}
+
+blockquote p {
+	color: rgb(80, 80, 80);
+}
+
+ul {
+	line-height: 1.75;
+	padding-left: 1em;
+	list-style: circle;
+	color: rgb(80, 80, 80);
+}
+li {
+	text-align: left;
+	line-height: 1.75;
+	text-indent: -1em;
+	display: block;
+	margin: 0.2em 8px;
+}
+
+strong {
+	line-height: 1.75;
+	color: rgb(15, 76, 129);
+}
+
+ol {
+	font-size: 14px;
+	letter-spacing: normal;
+	text-wrap: wrap;
+	text-align: left;
+	line-height: 1.75;
+	font-family: -apple-system-font, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI", "Microsoft YaHei", Arial, sans-serif;
+	padding-left: 1em;
+	color: rgb(63, 63, 63);
+}

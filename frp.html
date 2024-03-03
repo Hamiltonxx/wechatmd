@@ -6,71 +6,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://google-fonts.mirrors.sjtug.sjtu.edu.cn/css2?family=Noto+Sans+SC&display=swap" rel="stylesheet">
+    <link href="https://google-fonts.mirrors.sjtug.sjtu.edu.cn/css2?family=Noto+Serif+SC&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="hgz.css">
 </head>
 
 <body>
 
-    <div class="animated-box in">
+    <!-- <div class="animated-box in">
         <h1>Animated border</h1>
         <p>Without fixed width or static background</p>
+    </div> -->
+
+<!--     <h1>Rust生命周期</h1>
+    <img src="sunset.png" width="60%" />
+ -->
+    <p>本文中的外网机子A和内网机子B均为Ubuntu系统.</p>
+    <div class="animated-box in">
+        <h1>下载</h1>
     </div>
 
-    <p>本文中的外网机子A和内网机子B均为Ubuntu系统.</p>
-    <h1 id="下载">下载</h1>
-    <pre><code class="language-shell">wget
-            https://github.com/fatedier/frp/releases/download/v0.54.0/frp_0.54.0_linux_amd64.tar.gz
-        </code></pre>
-    <h1 id="外网机子a">外网机子A</h1>
-    <pre><code class="language-shell">tar xzvf frp_0.54.0_linux_amd64.tar.gz
-            cd frp_0.54.0_linux_amd64
-            vim frps.toml
-            bind_port = 7000
-            tls_enable = true
-            ./frps -c frps.toml
-        </code></pre>
-    <h1 id="内网机子b">内网机子B</h1>
-    <pre><code class="language-shell">tar xzvf frp_0.54.0_linux_amd64.tar.gz
-            cd frp_0.54.0_linux_amd64
-            vim frps.toml
-            serverAddr = &quot;sh.cirray.cn&quot;
-            serverPort = 7000
+    <img src="wgetfrp.png" width="100%">
 
-            [[proxies]]
-            name = &quot;ssh&quot;
-            type = &quot;tcp&quot;
-            localIp = &quot;127.0.0.1&quot;
-            localPort = 22
-            remotePort = 7022
+    <div class="animated-box in">
+        <h1>外网机子A</h1>
+    </div>
+    <img src="A.png" width="80%">
 
-            [[proxies]]
-            name = &quot;mysql&quot;
-            type = &quot;tcp&quot;
-            localIp = &quot;127.0.0.1&quot;
-            localPort = 3306
-            remotePort = 7306
-            ./frpc -c frpc.toml
-        </code></pre>
-    <h1 id="开机自启systemd">开机自启systemd</h1>
+    <div class="animated-box in">
+        <h1>内网机子B</h1>
+    </div>
+    <img src="B.png" width="80%">
+
+    <div class="animated-box in">
+        <h1>开机自启Systemd</h1>
+    </div>
     <p>以内网机子B为例</p>
-    <pre><code class="language-shell">sudo vim /etc/systemd/system/frps.service
-            [Unit]
-            Description = frp client
-            After = network.target
+    <img src="systemd.png" width="80%">
 
-            [Service]
-            Type = simple
-            ExecStart = /usr/bin/frpc -c /etc/frp/frpc.toml
-            Restart=on-failure
-            RestartSec=10s
-
-            [Install]
-            WantedBy = multi-user.target
-            sudo systemctl daemon-reload
-            sudo systemctl enable frpc
-            sudo systemctl restart frpc
-        </code></pre>
-
+    <div class="animated-box in">
+        <h1>总结</h1>
+    </div>
+    <p class="indent">我们知道机子A的域名是sh.cirray.cn, 这样我们就能通过 ssh B_account@sh.cirray.cn -p 7022来访问内网机子B。这里我们还配置了mysql服务的穿透,只要B上mysql配置了0.0.0.0的访问,就能通过 mysql -h sh.cirray.cn -P 7306 -p 来访问内网机子B上的mysql.</p>
+    <p class="indent">此外后端开发人员会遇到，本地开发的服务想随时让前端外网访问，同样增加一个 type为tcp的proxies配置即可。</p>
 </body>
 
 </html>
