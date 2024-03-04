@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HIGH LIGHT JS</title>
+    <!-- <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.8.0/styles/a11y-dark.min.css"> -->
+    <link rel="stylesheet" href="github-dark.min.css">
+    <style>
+        * {
+            margin: 0;
+        }
+        pre {
+            position: relative;
+        }
+        small {
+            font-size: 12px;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+            font-weight: 700;
+            background-color: rgba(0, 0, 0, 0.3);
+            border-bottom-left-radius: 0.375em;
+            color: white;
+            padding: 4px 8px;
+            text-transform: uppercase;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <pre><code class="language-rust">
+println!("Hello World!");println!("Hello World!");
+println!("Hello World!");println!("Hello World!");
+    </code>
+    <!-- <small>rust</small> -->
+</pre>
+
+    <!-- <script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script> -->
+    <script src="highlight.min.js"></script>
+	<!-- <script>hljs.highlightAll({language: 'rust'});</script> -->
+    <script>
+        // hljs.initHighlightingOnLoad();
+        hljs.highlightAll();
+        addEventListener('load', function() {
+            const pres = document.querySelectorAll('pre');
+            // Array.prototype.forEach.call(blocks, function(block) {
+            //     var language = block.result.language;
+            //     console.log(language);
+            // });
+            pres.forEach(pre => {
+                const code = pre.querySelector('code');
+                const language = code.result.language;
+                const label = document.createElement('small');
+                label.textContent = language;
+                pre.appendChild(label);
+            });
+        });
+    </script>
+</body>
+</html>

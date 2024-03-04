@@ -18,14 +18,14 @@ p {
     margin-right: 8px;
 }
 
-code {
+/* code {
 	white-space: pre-wrap;
 	font-size: 12.6px;
 	color: rgb(221, 17, 68);
 	background: rgba(27, 31, 35, 0.05);
 	padding: 3px 5px;
 	border-radius: 4px;
-}
+} */
 
 h2 {
 	text-align: center;
@@ -78,4 +78,22 @@ li {
 strong {
     color: rgb(15,76,129);
     font-weight: bold;
+}
+
+/* code block */
+pre {
+    position: relative;
+}
+small {
+    font-size: 12px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+    font-weight: 700;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-bottom-left-radius: 0.375em;
+    color: white;
+    padding: 4px 8px;
+    text-transform: uppercase;
+    position: absolute;
+    top: 0;
+    right: 0;
 }
